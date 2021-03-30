@@ -8,7 +8,7 @@ The Default Dubbed anime Language is English.
 ## Usage
 ### 1. Importing the Library
 ```from gogoanimeapi import gogoanime as anime```
-###2. Searching Anime by Manual Input
+### 2. Searching Anime by Manual Input
 ```anime_search = anime.get_search_results(query="Tonikaku Kawaii")```
 ###
 #### This will return a list of dictionaries containing Anime "name" and "animeid":
