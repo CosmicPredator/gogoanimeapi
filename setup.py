@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 
 setup(
-    name="gogoanimeapi",
+    name="gogoanime-api",
     version="1.2.458",
     description="Unofficial API Library for Downloading Anime Dubbed and Subbed",
     py_modules=["gogoanimeapi"],
