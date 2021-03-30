@@ -1,40 +1,40 @@
-#GogoAnimeAPI
+# GogoAnimeAPI
 An unofficial gogoanime api Library for Python where you can get free Dubbed and Subbed Download Links of almost all Anime.
 The Default Dubbed anime Language is English.
 
-##Installation
+## Installation
 ```pip3 install gogoanimeapi```
 
-##Usage
-###1. Importing the Library
+## Usage
+### 1. Importing the Library
 ```from gogoanimeapi import gogoanime as anime```
 ###2. Searching Anime by Manual Input
 ```anime_search = anime.get_search_results(query="Tonikaku Kawaii")```
 ###
-####This will return a list of dictionaries containing Anime "name" and "animeid":
+#### This will return a list of dictionaries containing Anime "name" and "animeid":
 ```
 [{'name': 'Tonikaku Kawaii', 'animeid': 'tonikaku-kawaii'}, 
         {'name': 'Tonikaku Kawaii OVA', 'animeid': 'tonikaku-kawaii-ova'}, 
             {'name': 'Tonikaku Kawaii (Dub)', 'animeid': 'tonikaku-kawaii-dub'}]
 ```
 ###
-####Getting the name of anime search results:
+#### Getting the name of anime search results:
 ```
 for title in anime_search:
     print(title.get('name'))
 ```
 ###
-####This will print the following:
+#### This will print the following:
 ```
 Tonikaku Kawaii
 Tonikaku Kawaii OVA
 Tonikaku Kawaii (Dub)
 ```
 Likewise, You can get "animeid" by this method.
-###3. Getting Anime Details by animeid:
+### 3. Getting Anime Details by animeid:
 ```anime_details = anime.get_anime_details(animeid="tonikaku-kawaii-dub")```
 ###
-####This will return a dictionary containing the Detials of Anime of animeid:
+#### This will return a dictionary containing the Detials of Anime of animeid:
 ```
 {'title': 'Tonikaku Kawaii (Dub)', 
     
@@ -56,20 +56,20 @@ Likewise, You can get "animeid" by this method.
                                  }
 ```
 ###
-####Getting a Specific detail of Anime:
+#### Getting a Specific detail of Anime:
 ```
 released_year = anime_details.get('year')
 println(released_year)
 ```
-####This will return the released year of Anime:
+#### This will return the released year of Anime:
 ```2020```
 
 Likewise, You can get any details mentioned above for your app.
 
-###4. Getting Download Links for an Anime:
+### 4. Getting Download Links for an Anime:
 ```anime_link = anime.get_episodes_link(animeid="tonikaku-kawaii-dub", episode_num=3)```
 ###
-####This will return a dictionary of all Available Download Links:
+#### This will return a dictionary of all Available Download Links:
 ```
 {
 'title': 'Tonikaku Kawaii (Dub)', 
@@ -141,7 +141,7 @@ Availabe Genres:
 
 ```browse_genre = anime.get_by_genre(genre_name="action", page=1)```
 ###
-####This will return a list of dictionaries containing all anime under specified Genre with page.
+#### This will return a list of dictionaries containing all anime under specified Genre with page.
 ```
 [
     {'genre': 'action'}, 
@@ -170,15 +170,15 @@ Availabe Genres:
 ```
 The last page number can't be detected because, I have no resources about that.
 
-###4. Error Handling
-####gogoanimeapi library has some error handlers.
-####1. Error - 404
+### 4. Error Handling
+#### gogoanimeapi library has some error handlers.
+#### 1. Error - 404
 If the host device does not connected to Internet, The following error will be thrown up.
 ```{'status': '404', 'reason': "Check the host's network Connection"}```
-####2. Error - 204
+#### 2. Error - 204
 This error occurs when no results found for a search query.
 ```{'status': '204', 'reason': 'No search results found for the query'}```
-####3. Error - 400
+#### 3. Error - 400
 This error occurs when the user entered an incorrect data.
 
 ```{'status': '400', 'reason': 'Invalid animeid'}```
@@ -188,6 +188,6 @@ This error occurs when the user entered an incorrect data.
 ```{'status': '400', 'reason': 'Invalid genre_name or page_num'}```
 
 
-##Copyrights © 2021 BaraniARR.,
+## Copyrights © 2021 BaraniARR.,
 
-###Licensed under MIT License.,
+### Licensed under MIT License.,
