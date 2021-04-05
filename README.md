@@ -174,9 +174,11 @@ The last page number can't be detected because, I have no resources about that.
 #### gogoanimeapi library has some error handlers.
 #### 1. Error - 404
 If the host device does not connected to Internet, The following error will be thrown up.
+
 ```{'status': '404', 'reason': "Check the host's network Connection"}```
 #### 2. Error - 204
 This error occurs when no results found for a search query.
+
 ```{'status': '204', 'reason': 'No search results found for the query'}```
 #### 3. Error - 400
 This error occurs when the user entered an incorrect data.
