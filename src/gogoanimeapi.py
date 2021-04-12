@@ -89,64 +89,17 @@ class gogoanime():
             dowCode = requests.get(URL)
             data = dowCode.text
             soup = BeautifulSoup(data, "lxml")
-            dow_url1 = soup.findAll('div', {'class': 'dowload'})[0].find('a')
-            dow_url2 = soup.findAll('div', {'class': 'dowload'})[1].find('a')
-            dow_url3 = soup.findAll('div', {'class': 'dowload'})[2].find('a')
-            dow_url4 = soup.findAll('div', {'class': 'dowload'})[3].find('a')
-            dow_url5 = soup.findAll('div', {'class': 'dowload'})[4].find('a')
-            dow_url6 = soup.findAll('div', {'class': 'dowload'})[5].find('a')
-            dow_url7 = soup.findAll('div', {'class': 'dowload'})[6].find('a')
-
-            downlink1 = dow_url1.get('href')
-            downlink2 = dow_url2.get('href')
-            downlink3 = dow_url3.get('href')
-            downlink4 = dow_url4.get('href')
-            downlink5 = dow_url5.get('href')
-            downlink6 = dow_url6.get('href')
-            downlink7 = dow_url7.get('href')
-
-            str1 = dow_url1.string
-            str_spl1 = str1.split()
-            str_spl1.remove(str_spl1[0])
-            str_original_1 = ""
-            quality_name1 = str_original_1.join(str_spl1)
-
-            str2 = dow_url2.string
-            str_spl2 = str2.split()
-            str_spl2.remove(str_spl2[0])
-            str_original_2 = ""
-            quality_name2 = str_original_2.join(str_spl2)
-
-            str3 = dow_url3.string
-            str_spl3 = str3.split()
-            str_spl3.remove(str_spl3[0])
-            str_original_3 = ""
-            quality_name3 = str_original_3.join(str_spl3)
-
-            str4 = dow_url4.string
-            str_spl4 = str4.split()
-            str_spl4.remove(str_spl4[0])
-            str_original_4 = ""
-            quality_name4 = str_original_4.join(str_spl4)
-
-            str5 = dow_url5.string
-            str_spl5 = str5.split()
-            str_spl5.remove(str_spl5[0])
-            str_original_5 = ""
-            quality_name5 = str_original_5.join(str_spl5)
-
-            str6 = dow_url6.string
-            str_spl6 = str6.split()
-            str_spl6.remove(str_spl6[0])
-            str_original_6 = ""
-            quality_name6 = str_original_6.join(str_spl6)
-
-            str7 = dow_url7.string
-            str_spl7 = str7.split()
-            str_spl7.remove(str_spl7[0])
-            str_original_7 = ""
-            quality_name7 = str_original_7.join(str_spl7)
-            episode_res_link = {'title':f"{tit_url}", f"{quality_name1}":f"{downlink1}", f"{quality_name2}":f"{downlink2}", f"{quality_name3}":f"{downlink3}", f"{quality_name4}":f"{downlink4}", f"{quality_name5}":f"{downlink5}", f"{quality_name6}":f"{downlink6}", f"{quality_name7}":f"{downlink7}"}
+            dow_url= soup.findAll('div',{'class':'dowload'})
+            episode_res_link = {'title':f"{tit_url}"}
+            for i in range(len(dow_url)):
+                Url = dow_url[i].find('a')
+                downlink = Url.get('href')
+                str_= Url.string
+                str_spl = str_.split()
+                str_spl.remove(str_spl[0])
+                str_original = ""
+                quality_name = str_original.join(str_spl)
+                episode_res_link.update({f"{quality_name}":f"{downlink}"})
             return episode_res_link
         except AttributeError:
             return {"status":"400", "reason":"Invalid animeid or episode_num"}
