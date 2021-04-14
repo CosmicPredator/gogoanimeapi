@@ -59,8 +59,12 @@ class gogoanime():
             status = lis[4].a.get_text()
             oth_names = lis[5].get_text()
             lnk = soup.find(id="episode_page")
-            source_url = lnk.find("li").a
-            ep_num = int(source_url.get("ep_end"))
+            ep_str = str(lnk.contents[-2])
+            a_tag = ep_str.split("\n")[-2]
+            a_tag_sliced = a_tag[:-4].split(">")
+            last_ep_range = a_tag_sliced[-1]
+            y = last_ep_range.split("-")
+            ep_num = y[-1]
             res_detail_search = {"title":f"{tit_url}", "year":f"{year}", "other_names":f"{oth_names}", "type":f"{type_of_show}", "status":f"{status}", "genre":f"{genres}", "episodes":f"{ep_num}", "image_url":f"{imgg}","plot_summary":f"{plot_summary}"}
             return res_detail_search
         except AttributeError:
