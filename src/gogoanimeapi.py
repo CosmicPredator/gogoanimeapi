@@ -131,5 +131,43 @@ class gogoanime():
         except requests.exceptions.ConnectionError:
             return {"status": "404", "reason": "Check the host's network Connection"}
 
+    def get_by_recent():
+        try:
+            url = 'https://gogoanime.ai'
+            session = HTMLSession()
+            response = session.get(url)
+            response_html = response.text
 
+            soup = BeautifulSoup(response_html, 'lxml')
+            recent_anime =[]
+            animes =  soup.find("ul", {"class": "items"}).find_all("li")
+            for anime in animes:
+                tit = anime.a["title"]
+                urll = anime.a["href"]
+                recent_anime.append({"title":f"{tit}","episodeid":f"{urll[1:]}"})
+            if recent_anime == []:
+                return {"status":"400", "reason":"no idea recent anime"}
+            else:
+                return recent_anime
+        except requests.exceptions.ConnectionError:
+            return {"status":"404", "reason":"Check the host's network Connection"}
+
+    def get_by_popular(page):
+        try:
+            url = 'https://www1.gogoanime.ai/popular.html?page={page}'
+            response = requests.get(url)
+            plainText = response.text
+            soup = BeautifulSoup(plainText, "lxml")
+            popular_anime =[]
+            animes =  soup.find("ul", {"class": "items"}).find_all("li")
+            for anime in animes:
+                tit = anime.a["title"]
+                urll = anime.a["href"]
+                popular_anime.append({"title":f"{tit}","episodeid":f"{urll[1:]}"})
+            if popular_anime == []:
+                return {"status":"400", "reason":"no idea popular anime"}
+            else:
+                return popular_anime
+        except requests.exceptions.ConnectionError:
+            return {"status":"404", "reason":"Check the host's network Connection"}
 
