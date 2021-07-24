@@ -10,7 +10,7 @@ setup(
     description="Unofficial API Library for Downloading Anime Dubbed and Subbed",
     py_modules=["gogoanimeapi"],
     package_dir={'': 'src'},
-    install_requires=["bs4", "requests", "requests_html"],
+    install_requires=["bs4", "requests", "requests_html", "random"],
     extras_require={
                       "dev":[
                           "pytest",
